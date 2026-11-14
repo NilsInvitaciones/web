@@ -1,0 +1,940 @@
+/* --- Tus variables (la base de la plantilla) --- */
+:root {
+  --color-1: #3C6EAD; /*azul intenso*/
+  --color-2: #8FC7E8; /*celeste luminoso*/
+  --color-3: #D4AF37; /*dorado*/
+  --color-4: #B0B3B8; /*plateado neutro*/
+  --color-5: #ffffff; /*blanco*/
+  --color-6: #333333; /*Gris para textos*/
+  --fuente-1: "Dancing Script", cursive;
+  --fuente-2: "Montserrat", sans-serif;
+  --fuente-3: "Nunito", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+   	background: linear-gradient(135deg, #8fc7e873, #ffffff); /*Codigo para darle una gradiente bonita a l fondo que veran en monitores y laptops*/
+}
+
+body {
+    font-family: var(--fuente-2);
+    margin: 0 auto;
+    background-color: var(--color-5); /* Este puedes dejarlo, no afecta */
+    max-width: 570px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+
+/* --- Estilos de la Pantalla de Bienvenida --- */
+#pantalla-bienvenida {
+    position: fixed; /* Ocupa toda la pantalla y se queda fija */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #8fc7e8, #ffffff); /* Misma gradiente que tu fondo */
+    z-index: 9999; /* Se asegura que esté por encima de todo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: opacity 0.8s ease-out, visibility 0.8s ease-out; /* Para la transición de salida */
+}
+
+/* Contenedor que respeta el ancho de tu diseño */
+.contenido-bienvenida {
+    max-width: 570px;
+    padding: 20px;
+    text-align: center;
+    color: var(--color-6);
+}
+
+.contenido-bienvenida h2 {
+    font-family: var(--fuente-1);
+    font-size: 3rem;
+    color: var(--color-1);
+    margin-bottom: 30px;
+}
+
+.sobre-imagen {
+    max-width: 300px; /* Ajusta el tamaño del sobre como prefieras */
+    margin-bottom: 30px;
+    animation: bounce-gift 2.5s infinite ease-in-out; /* Reutilizamos tu animación de regalo */
+}
+
+.cta-abrir {
+    font-family: var(--fuente-2);
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--color-6);
+    /*animation: pulse-text 2s infinite; */
+}
+
+/* Animación para el texto de 'presiona' */
+@keyframes pulse-text {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Clase que usaremos con JS para ocultar la pantalla */
+#pantalla-bienvenida.oculto {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Evita que el contenido principal se pueda 'scrollear' mientras la bienvenida está activa */
+body.no-scroll {
+    position: fixed; /* <-- La clave está aquí */
+    width: 100%;     /* Evita que el layout se altere */
+    overflow: hidden;/* Mantenemos esto por si acaso */
+}
+
+
+/* --- Estilos del Control de Música --- */
+#control-musica {
+    position: fixed;
+    bottom: 20px;
+    left: 20px; /* Lo posiciona a la izquierda */
+    width: 50px;
+    height: 50px;
+    background-color: var(--color-1); /* Usamos un color de tu paleta */
+    border-radius: 50%; /* Esto lo hace circular */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 1000; /* Se asegura que esté por encima de otros elementos */
+    opacity: 0; /* Empezará oculto */
+    visibility: hidden;
+    transition: opacity 0.5s, visibility 0.5s; /* Animación suave de aparición */
+}
+
+#control-musica.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+#control-musica img {
+    width: 24px; /* Ajusta el tamaño del icono */
+    height: 24px;
+}
+
+
+/* --- Estilos del Header --- */
+.hero-section {
+  background-image: url('img/header-bg.jpg'); /* Aquí va tu fondo */
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-text {
+  color: var(--color-1);
+}
+
+.nombre-quinceanera {
+  font-family: var(--fuente-1);
+  font-size: 7rem; /* Tama?o grande, se puede ajustar */
+  font-weight: normal;
+  margin: 0px;
+}
+
+.titulo-evento {
+  font-family: var(--fuente-2);
+  color: var(--color-2);
+  font-size: 1.5rem;
+ /* text-transform: uppercase; */
+  letter-spacing: 1.5px;
+  margin-top: -20px;
+}
+
+
+
+.fecha {
+  font-family: var(--fuente-2);
+  font-size: 1.2rem;
+  margin-top: 20px;
+}
+
+.mensaje {
+  font-family: var(--fuente-2);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--color-6);
+  max-width: 350px; /* Para que no sea muy ancho */
+  letter-spacing: 0.05rem;
+  margin-top: 25px;
+  line-height: 1.5;
+  /*background-color: #00000012; */
+  /*border-radius: 5%;*/
+}
+
+
+/* CONTADOR: contenedor base */
+
+.contador-section {
+  background-image:url('img/fondo-cont-conta.jpg');
+  background-size: cover;
+  text-align: center;
+  padding: 40px 0; /*  Espacio arriba y abajo */
+}
+
+.contador-container {
+	 
+  position: relative;
+  display: inline-block;/* mantiene tama?o seg¨²n la imagen */
+  margin: 0 auto; /*  Por si acaso, asegura el centrado */
+}
+
+/* La imagen del marco */
+.contador-marco {
+  display: block;
+  
+  max-width: 100%;
+  height: auto;
+  /*z-index: 1;*/
+}
+
+/* Overlay absoluto que ocupa exactamente el tama?o del contenedor (la imagen) */
+.contador-overlay {
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem; /* espacio entre frase, contador y corazón */
+  z-index: 2; /* por encima de la imagen */
+  pointer-events: none; /* evita capturar toques: los elementos decorativos no bloquean interacción */
+}
+
+/* Si quieres que la frase o botones dentro del overlay sean clicables,
+   pon pointer-events: auto en esos elementos especificos. */
+
+/* Texto arriba del contador */
+.contador-frase {
+  font-family: var(--fuente-2);
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--color-2);
+  transform: translateY(-15px); /* solo a la frase Solo falta*/
+  margin-bottom: -5px;
+  pointer-events: auto; /* si quieres que sea seleccionable o accesible */
+}
+
+/* Reglas del contador (ahora dentro del overlay; ya no absolute) */
+.contador-numeros-horizontal {
+  width: 65%;           /* ajusta según necesites */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  pointer-events: auto; /* si quieres permitir selección de números */
+  margin-bottom: 20px;
+}
+
+/* Si tenías ::after con : separador, déjalo; sino ajusta */
+.bloque-tiempo {
+  position: relative;
+}
+
+/* separador entre bloques (dos puntos) */
+.bloque-tiempo:not(:last-child)::after {
+  content: '|';
+  font-family: var(--fuente-2);
+  font-size: 1.6rem;
+  color: var(--color-4);
+  position: absolute;
+  right: -20px; /* ajusta */
+  top: 30%;
+  transform: translateY(-50%);
+}
+
+/* n¨²meros y etiquetas */
+.bloque-tiempo .numero {
+  display: block;
+  font-family: var(--fuente-2);
+  font-size: 1.8rem; /*ANTES 1.6rem*/
+  color: var(--color-1);
+  font-weight: 800;
+  text-align: center;
+}
+.bloque-tiempo .etiqueta {
+  display: block;
+  font-family: var(--fuente-2);
+  font-size: 0.9rem;
+  color: var(--color-2);
+  text-align: center;
+  margin-top: 4px;
+}
+
+
+
+/* --- Responsivo: ajustar tamaños en móviles muy pequeños  antes 380px--- */
+@media (max-width: 576px) {
+  .contador-numeros-horizontal { 
+  width: 60%; }
+  .bloque-tiempo .numero { 
+  font-size: 1.4rem; }
+  .contador-frase { 
+  font-size: 1.3rem; }
+  
+}
+
+
+/* --- Secci¨®n padres y padrinos --- */
+
+.familia-section {
+  background-image: url('img/fondo-seccion-01.jpg');
+  background-size: cover;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.marco-familia {
+	background-color: #8fc7e882;
+    padding: 10px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
+}
+.section-title-script-familia {
+font-family: var(--fuente-1);
+  color: var(--color-6); 
+  font-size: 1.8rem;
+  font-weight: normal;
+  margin: 20px 0px 20px 0px;
+}
+.section-title-script {    /*Esta secci¨®n tambien afecta a formato al titulo de Galeria, y de Musica y Dress Code porque tienen el class="section-title-script"*/
+  font-family: var(--fuente-1);
+  color: var(--color-1); 
+  font-size: 2.3rem;
+  font-weight: normal;
+  margin: 20px 0px 40px 0px;
+}
+
+.section-subtitle {
+  font-family: var(--fuente-1);
+  color: var(--color-1); 
+  font-size: 2rem;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.nombres {
+  font-family: var(--fuente-3);
+  color: var(--color-6);
+  font-size: 1.3rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.separador-grafico {
+  margin: 40px auto; /* Espacio arriba y abajo */
+  width: 100px; /* Ancho del adorno */
+}
+
+.separador-grafico img {
+  width: 100%;
+}
+
+/* --- Secci¨®n informaci¨®n --- */
+
+.info-section {
+  background-image: url('img/fondo-seccion-01.jpg');
+  background-size: cover;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.gif-container {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 0 auto;
+  border-radius: 50%; /* Para hacerlo un circulo */
+  background-color: var(--color-5);
+  box-shadow: 0 0 20px #8fc7e89e; /* El resplandor con tu verde */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Para que el GIF no se salga del circulo */
+}
+
+.gif-container img {
+  width: 65%;
+  height: 65%;
+  object-fit: cover;
+  animation: pulse-icon 2s infinite ease-in-out;
+}
+
+@keyframes pulse-icon {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+.title-lazo {
+  font-family: var(--fuente-1);
+  font-size: 3rem;
+  /*text-transform: uppercase;*/
+  font-weight: normal;
+  /*letter-spacing: 2px;*/
+  color: var(--color-5);
+  background-color: var(--color-2);
+  padding: 10px 30px;
+  display: inline-block; /* Para que el fondo se ajuste al texto */
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.title-lazo::before
+ {
+   background-image: url('img/lazo-izquierdo.svg');
+  position: absolute;
+content: '';
+background-size: contain !important;
+background-repeat: no-repeat;
+background-position: right;
+height: 100%; /* Alto igual al del titulo */
+width: 16px; /* Ancho de tu imagen de lazo */
+left: -15px; /* Posici¨®n del extremo izquierdo */
+top: 0;
+}
+
+
+.title-lazo::after {
+    background-image: url('img/lazo-derecho.svg');
+  position: absolute;
+content: '';
+background-size: contain !important;
+background-repeat: no-repeat;
+background-position: left;
+height: 100%; /* Alto igual al del titulo */
+width: 16px; /* Ancho de tu imagen de lazo */
+right: -15px; /* Posici¨®n del extremo derecho */
+top: 0;
+}
+
+
+.info-bloque {
+  margin-bottom: 25px;
+}
+
+.info-bloque h4 {
+  font-family: var(--fuente-2);
+  color: var(--color-2);
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+ /* text-transform: uppercase;*/
+  margin: 0 0 5px 0;
+}
+
+.info-bloque p {
+  font-family: var(--fuente-2);
+  color: var(--color-6);
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+
+.btn-mapa {
+  display: inline-block;
+  font-family: var(--fuente-2);
+  background-color: var(--color-1);
+  color: var(--color-5);
+  padding: 15px 40px;
+  margin-top: 20px;
+  text-decoration: none;
+  border-radius: 50px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: transform 0.2s ease;
+}
+
+.btn-mapa:hover {
+  transform: scale(1.08);
+  background-color: var(--color-2);
+  color: var(--color-6);
+}
+
+
+/* ======== Secci¨®n GALERIA DE FOTOS ======== */
+.galeria-section {
+    background-image: url('img/fondo-seccion-01.jpg');
+    background-size: cover;
+    padding: 60px 0;
+    text-align: center;
+    overflow: hidden; /* Importante para que no haya desbordes */
+}
+
+.galeria-section .section-title-script{
+	padding: 0 30px;
+}
+.section-subtitle-galeria {
+    color: var(--color-6);
+	font-family: var(--fuente-3);
+    font-size: 1.3rem;
+    /*max-width: 450px;*/
+    margin: 20px 10px 20px 10px;
+    line-height: 1.2;
+}
+
+.camera-icon-container {
+    width: 100px;
+    margin: 0 auto 10px auto;
+}
+
+.camera-icon-container img {
+    width: 100%;
+}
+
+.galeria-swiper {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 50px; /* Espacio para la paginaci¨®n */
+}
+
+/* --- ESTILOS DEL CARRUSEL --- */
+.swiper-slide {
+    width: 280px; /* Ancho de cada foto Polaroid */
+}
+
+.polaroid-frame {
+    background-color: #fff;
+    padding: 15px 15px 40px 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: rotate(-3deg);
+    transition: transform 0.4s ease;
+}
+
+.swiper-slide-active .polaroid-frame {
+    /* La foto activa se agranda y se endereza */
+    transform: rotate(0deg) scale(1.1);
+}
+
+.polaroid-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- Estilos para flechas y paginaci¨®n --- */
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--color-1);
+}
+
+.swiper-pagination-bullet {
+    background-color: var(--color-2);   /* Color cuando la foto no es la que se muestra*/
+    opacity: 0.8;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: var(--color-1); /* Color cuando la foto es la que se muestra*/
+}
+
+
+/* --- Secci¨®n informaci¨®n m¨²sica --- */
+.music-section {
+  background-image: url('img/fondo-seccion-01.jpg');
+  background-size: cover;
+  padding: 60px 20px 50px 20px;
+}
+.music-section-wrapper {
+  position: relative; /* Clave para posicionar la decoración */
+  max-width: 500px; /* Ancho máximo del contenedor */
+  margin: 0 auto;
+}
+.music-decoration {
+  position: absolute;
+  top: -55px;
+  left: -40px;
+  width: 150px; /* Tama?o de la decoraci¨®n */
+  z-index: 3; /* Delante del contenedor */
+  /* Al final, aquí añadiremos el data-aos para la animación, Al se puso en las mismas etiquetas del HTML */
+}
+.music-container {
+  background-color: #8fc7e857; /* Tarjeta celeste transparente */
+  padding: 40px;
+  border-radius: 25px; /* Puntas bien redondeadas */
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative; /* Para asegurar que está por encima de la flor */
+  z-index: 2; /* debajo de la decoración */
+}
+.gif-music-container {
+  width: 100px; /* Tamaño del GIF */
+  height: 100px;
+  margin: -20px auto 20px auto;
+}
+
+.gif-music-container img {
+  width: 100%;
+}
+.music-prompt {  /*Pregunta sobre la canción*/
+  font-family: var(--fuente-3);
+  color: var(--color-6);
+  font-size: 1.2rem;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+/* Podemos reutilizar y renombrar el bot¨®n para m¨¢s flexibilidad */
+.btn-primary {
+  display: inline-block;
+  font-family: var(--fuente-2);
+  background-color: var(--color-1);
+  color: var(--color-5);
+  padding: 15px 40px;
+  text-decoration: none;
+  border-radius: 50px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: transform 0.2s ease;
+}
+.btn-primary:hover {
+  transform: scale(1.08);
+  background-color: var(--color-2);
+  color: var(--color-6);
+}
+
+
+/* --- Secci¨®n Dress Code --- */
+
+.dress-code-section {
+  background-image: url('img/fondo-seccion-01.jpg');
+  background-size: cover;
+  padding: 20px 20px 80px 20px;
+}
+.dress-code-wrapper {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.dress-code-decoration {
+  position: absolute;
+  bottom: -55px; /* <-- Posición ABAJO */
+  right: -40px;  /* <-- Posición DERECHA */
+  width: 150px;
+  z-index: 3;
+  /* Aquí tambien iría el data-aos para la animación. Al final se puso en las etiquetas del HTML */
+}
+.dress-code-container {
+   background-color: #8fc7e857;
+  padding: 40px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 2;
+}
+.gif-dress-code-container {
+  width: 100px;
+  height: 100px;
+  margin: -20px auto 20px auto;
+}
+
+
+.gif-dress-code-container img {
+  width: 100%;
+}
+.dress-code-text {
+  font-family: var(--fuente-2);
+  color: var(--color-6);
+  font-size: 1.3rem; 
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 20px 0 0 0;
+}
+
+
+/* --- Secci¨®n Confirmar asistencia --- */
+
+.confirmacion-section {
+/*  background-color: var(--color-3); */
+  background-image: url('img/fondo-seccion-01.jpg');
+  background-size: cover;
+  color: var(--color-5);
+  padding: 40px 20px 40px 20px;
+  text-align: center;
+}
+
+.confirmar-decoration {
+	position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 150px;
+    z-index: 3;
+}
+
+.confirmacion-container {
+  background-color: #8fc7e8bd;
+  padding: 20px;
+  border-radius: 25px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+  border: 4px dashed var(--color-1);
+  position: relative;
+  z-index: 2;
+
+}
+
+.section-subtitle_asiste{
+	font-family: var(--fuente-3);
+   font-size: 1.8rem;
+   Color: var(--color-1);
+}
+.confirmacion-container .icon-container {
+  width: 100px;
+  margin: 20px auto;
+}
+.confirmacion-container .icon-container img{
+  width: 100px;
+}
+
+
+.confirmacion-container p {
+  font-family: var(--fuente-3);
+  Color: var(--color-6);
+  font-size: 1.2rem;
+  max-width: 450px;
+  margin: 0 auto 30px auto;
+  line-height: 1.7;
+}
+.btn-confirmar {
+  /* Similar a .btn-primary pero con colores invertidos */
+  display: inline-block;
+  font-family: var(--fuente-2);
+  background-color: var(--color-1);
+  color: var(--color-5);
+  padding: 15px 40px;
+  margin-bottom: 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.btn-confirmar:hover {
+  transform: scale(1.1);
+  background-color: var(--color-2);
+  color: var(--color-6);
+}
+
+
+/* --- Sección Información de regalo --- */
+
+.regalo-section {
+  background-image: url('img/fondo-seccion-01.jpg');
+  background-size: cover;
+  padding: 80px 20px 40px 20px;
+}
+.regalo-container {
+ /* Reutilizamos el estilo de .music-container o .dress-code-container */
+  background-color: #8fc7e857;
+  padding: 40px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.regalo-container .icon-container {
+  width: 100px;
+  margin: 20px auto;
+}
+.regalo-container .icon-container img{
+  width: 100px;
+  animation: bounce-gift 2s infinite ease-in-out;
+}
+
+@keyframes bounce-gift {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+}
+
+
+.regalo-container p {
+  font-family: var(--fuente-3);
+  color: var(--color-6);
+  font-size: 1.2rem;
+  line-height: 1.7;
+  margin-top: 20px;
+  /*text-align: justify;*/
+}
+
+.toggle-btn {
+  margin-top: 1rem;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  background: var(--color-1);
+  color: #fff;
+  font-family: var(--fuente-2);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex; /* para alinear texto + icono */
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background 0.3s ease;
+}
+
+.toggle-btn:hover {
+  background: var(--color-4);
+  color: var(--color-6);
+}
+
+.toggle-btn .icon {
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.toggle-btn.active .icon {
+  transform: rotate(180deg);
+}
+
+.yape-info {
+  display: none;
+  margin-top: 0.8rem;
+  padding: 0.8rem 1.2rem;
+  background: #f9f9f9;
+  border: 1px dashed var(--color-1, #e84393);
+  border-radius: 15px;
+  font-size: 1rem;
+  color: var(--color-6);
+}
+
+.yape-info.show {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(-5px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* --- Secci¨®n Itinerario --- */
+
+.itinerario-section {
+  padding: 0px 20px;
+  text-align: center;
+}
+
+.itinerario-section h2.section-title-script{
+	margin: 20px 0px 0px 0px;
+}
+
+.itinerario-imagen {
+	width: 100%;
+	height: auto;
+	display: block;
+	
+}
+
+/* --- Secci¨®n Final --- */
+
+.cierre-section {
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--color-5);
+  padding: 20px;
+}
+.cierre-section h1 {
+  font-family: var(--fuente-1);
+  font-size: 2rem;
+  font-weight: normal;
+  color: var(--color-6);
+  line-height: 1.2;
+}
+
+
+#main-nav {
+    background-color: #fff;
+	background-image: url('img/fondo-seccion-01.jpg');
+    background-size: cover;
+    padding: 1.5rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.nav-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 1rem;
+}
+
+.nav-names {
+    font-family: var(--fuente-1);
+    font-size: 2.5rem;
+	font-weight: normal;
+    color: var(--color-2);
+    margin: 0;
+    text-align: center;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    font-family: var(--fuente-2);
+    font-size: 1rem;
+	font-weight: bold;
+    color: var(--color-1);
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-menu a:hover {
+    color: var(--color-4);
+}
+
+/*
+    ======================
+    Estilos del Pie de P¨¢gina
+    ======================
+*/
+footer {
+    background-color: var(--color-2);
+    color: var(--color-6);
+    text-align: center;
+    padding: 2rem;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+footer p {
+    font-family: var(--fuente-3);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
+}

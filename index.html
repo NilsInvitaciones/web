@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <meta property="og:url" content="https://yoinvitoaltono.lovestoblog.com/acuarela01/"> --><!-- Quizás esta la borro si algo no funciona luego-->
+	<meta property="og:site_name" content="Invitación de Camila">  <!-- Igual quizás borre esta si algo no funciona al compartir el link -->
+	<meta property="og:title" content="Mis 15 Años - Camila">
+	<meta property="og:description" content="Acompáñame a celebrar este día tan especial.">
+	<!--<meta property="og:image" content="https://yoinvitoaltono.lovestoblog.com/acuarela01/img/header-bg.jpg"> -->
+	<meta property="og:type" content="website">
+<!-- Aquí deberías poner la URL completa (ej: https://tusitio.com/img/portada.jpg), porque WhatsApp o Facebook no siempre reconocen rutas relativas como img/portada.jpg.-->
+    <title>Mis 15 Años - Camila</title>
+	<link rel="icon" href="favicon.png" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&family=Montserrat:wght@400;600&family=Nunito:wght@300..600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Audio-->
+    <audio id="musica-fondo" loop>
+        <source src="audio/mi-cancion.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="control-musica">
+        <img src="img/play-icon.svg" alt="Control de Música">
+    </div>
+    
+<!-- Pantalla de bienvenida-->
+<div id="pantalla-bienvenida">
+    <div class="contenido-bienvenida" data-aos="zoom-in">
+        <h2>Bienvenido(a)</h2>
+        <img src="img/sobre-invitacion.png" alt="Sobre de invitación" class="sobre-imagen">
+        <p class="cta-abrir">Presiona para ver la invitación</p>
+    </div>
+</div>
+
+    <header class="hero-section"   id="inicio">
+  <div class="hero-text" data-aos="fade-up" >
+    <h1 class="nombre-quinceanera">Camila</h1>
+    <h2 class="titulo-evento">Mis 15 Años</h2>
+    <p class="fecha">sábado 23 de mayo, 2026</p>
+    <p class="mensaje">
+      "Hay momentos inolvidables que se atesoran en el corazón para siempre, por esa razón quiero que compartas conmigo este día tan especial."
+    </p>
+  </div>
+</header>
+
+<section class="contador-section">
+  <div class="contador-container" data-aos="fade-up">
+    <img src="img/contador.png" alt="Marco floral para contador" class="contador-marco">
+
+    <!-- Overlay que coloca todo centrado encima de la imagen -->
+    <div class="contador-overlay">
+      <p class="contador-frase">Solo faltan</p>
+
+      <div class="contador-numeros-horizontal">
+        <div class="bloque-tiempo">
+          <span id="dias" class="numero">69</span>
+          <span class="etiqueta">Días</span>
+        </div>
+        <div class="bloque-tiempo">
+          <span id="horas" class="numero">19</span>
+          <span class="etiqueta">Horas</span>
+        </div>
+        <div class="bloque-tiempo">
+          <span id="minutos" class="numero">31</span>
+          <span class="etiqueta">Min</span>
+        </div>
+        <div class="bloque-tiempo">
+          <span id="segundos" class="numero">12</span>
+          <span class="etiqueta">Seg</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="familia-section" id="padres">
+<div class="marco-familia">
+  <h2 class="section-title-script-familia" data-aos="fade-down">Con la bendición de Dios y en compañia de</h2>
+
+  <div class="familia-bloque" data-aos="fade-right">
+    <h3 class="section-subtitle">Mis Padres</h3>
+    <p class="nombres">
+      Sr. Carlos Mijares Herrera<br>&<br>Sra. Marina Linares Vera
+    </p>
+  </div>
+
+  <div class="separador-grafico" data-aos="zoom-in">
+    <img src="img/ramita.png" alt="">
+  </div>
+
+  <div class="familia-bloque"  data-aos="fade-left">
+    <h3 class="section-subtitle">Mis Padrinos</h3>
+    <p class="nombres">
+     Sr. Joaquin Landeta Figueroa<br>&<br>Sra. Pamela Cornejo Flores
+    </p>
+  </div>
+  <h2 class="section-title-script-familia" data-aos="fade-up">Nos complace invitarte a ser parte de este gran día.</h2>
+  </div>
+</section>
+
+<section class="info-section" id="informacion">
+
+  <div class="gif-container" data-aos="zoom-in-up">
+    <img src="img/iglesia-icon.png" alt="">
+  </div>
+
+
+  <h3 class="title-lazo" data-aos="zoom-in">Misa</h3>
+
+  <div class="info-bloque">
+    <h4>Día</h4>
+    <p>Sábado, 23 de mayo<br> 8:00 PM</p>
+  </div>
+  
+  <div class="info-bloque">
+    <h4>Lugar</h4>
+    <p>Iglesia Inmaculada Concepción</p>
+  </div>
+
+  <div class="info-bloque">
+    <h4>Dirección</h4>
+    <p>Calle Arequipa #250</p>
+  </div>
+
+  <a href="https://maps.app.goo.gl/9oMELUt5zmnRHPxJ9" target="_blank" class="btn-mapa">
+    Ubicación
+  </a>
+  
+</section>
+
+<section class="info-section" id="informacion02">
+
+  <div class="gif-container" data-aos="zoom-in-up">
+    <img src="img/celebracion-icon.png" alt="">
+  </div>
+
+
+  <h3 class="title-lazo" data-aos="zoom-in">Celebración</h3>
+
+  <div class="info-bloque">
+    <h4>Día</h4>
+    <p>Sábado, 23 de mayo<br> 9:00 PM</p>
+  </div>
+
+  <div class="info-bloque">
+    <h4>Lugar</h4>
+    <p>Salón Club Campestre El Dorado</p>
+  </div>
+
+  <div class="info-bloque">
+    <h4>Dirección</h4>
+    <p>Calle Iquitos #1020</p>
+  </div>
+
+  <a href="#inicio" class="btn-mapa"> <!-- Luego cuando ponemos link se pone target="_blank" -->
+    ¿Cómo llegar?
+  </a>
+  
+</section>
+
+<section class="galeria-section" id="galeria">
+  <h2 class="section-title-script" data-aos="fade-in" >Un viaje de recuerdos por estos 15 años</h2>
+  <p class="section-subtitle-galeria" data-aos="fade-in" data-aos-delay="200">Cada instante vivido es un regalo que hoy celebro contigo.</p>
+  <div class="camera-icon-container" data-aos="zoom-in" data-aos-delay="400">
+    <img src="img/camara-icon.png" alt="">
+  </div>
+
+ <div class="swiper galeria-swiper">
+  
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="polaroid-frame">
+          <img src="fotos/foto1.jpg" alt="Recuerdo 1">
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="polaroid-frame">
+          <img src="fotos/foto2.jpg" alt="Recuerdo 2">
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="polaroid-frame">
+          <img src="fotos/foto3.jpg" alt="Recuerdo 3">
+        </div>
+      </div>
+	   <div class="swiper-slide">
+        <div class="polaroid-frame">
+          <img src="fotos/foto4.jpg" alt="Recuerdo 4">
+        </div>
+      </div>
+	   <div class="swiper-slide">
+        <div class="polaroid-frame">
+          <img src="fotos/foto5.jpg" alt="Recuerdo 5">
+        </div>
+      </div>
+    </div>
+		<div class="swiper-button-next"></div>
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-pagination"></div>
+ </div>
+  
+</section> 
+
+<section class="music-section" id="musica">
+  <div class="music-section-wrapper" >
+    <img src="img/flor-1.png" alt="" class="music-decoration" data-aos="fade-up-right" data-aos-delay="800">
+
+    <div class="music-container" data-aos="zoom-in" data-aos-delay="300">
+      <h2 class="section-title-script">Música</h2>
+      <div class="gif-music-container">
+        <img src="img/musica-icon.png" alt="">
+      </div>
+      <p class="music-prompt">
+        ¿Cuál es la canción que no puede faltar en mi fiesta?
+      </p>
+      <a href="#inicio" class="btn-primary" role="button">  <!-- Luego cuando ponemos link se pone target="_blank" -->
+        Sugerir Canción
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="dress-code-section">
+  <div class="dress-code-wrapper">
+   <img src="img/flor-2.png" alt="" class="dress-code-decoration" data-aos="fade-up-left" data-aos-delay="800"> 
+   
+    <div class="dress-code-container" data-aos="zoom-in" data-aos-delay="300">
+      <h2 class="section-title-script">Dress Code</h2>
+      <div class="gif-dress-code-container">
+        <img src="img/dresscode-icon.png" alt="">
+      </div>
+      <p class="dress-code-text">
+        Sport Elegante
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section class="regalo-section" >
+  <div class="regalo-container" data-aos="fade-up">
+    <h2 class="section-title-script">Sugerencia de Regalo</h2>
+    <div class="icon-container">
+      <img src="img/regalo-icon.png" alt="">
+    </div>
+    <p>Tu compañía es lo más importante para mí, pero si deseas tener un detalle, puedes hacerlo ayudando con mis ahorros.</p>
+	<button class="toggle-btn" id="toggleYapeBtn">
+	<span>Mi número de Yape</span>
+	<span class="icon">+</span>
+	</button>
+
+	<div id="yape-info" class="yape-info">
+	📱 958644532 para Yape y Plin
+	</div>
+
+  </div>
+</section>
+
+<section class="confirmacion-section" id="confirmacion" data-aos="fade-in">
+<img src="img/flor-1.png" alt="" class="confirmar-decoration aos-init aos-animate" data-aos="fade-up-right" data-aos-delay="800">
+  <div class="confirmacion-container">
+    <h2 class="section-subtitle_asiste">Confirma tu Asistencia</h2>
+    <div class="icon-container">
+      <img src="img/confirmar-icon.png" alt="">
+    </div>
+    <p>Será un honor contar contigo. Ayúdame confirmando hasta el 1 de noviembre.</p>
+    <a href="https://wa.me/51958544591?text=*Hola*,%20estoy%20interesado%20en%20adquirir%20la%20invitación%20¿Cuál%20es%20el%20precio%3F" target="_blank" class="btn-confirmar" role="button">
+      Confirmar aquí
+    </a>
+  </div>
+</section>
+
+
+<section class="itinerario-section">
+	<div>
+	<h2 class="section-title-script" data-aos="fade-in" >Itinerario</h2>
+	<img src="img/itinerario.jpg" alt="Itinerario" class="itinerario-imagen" data-aos="fade-up">
+	</div>
+</section>
+
+
+<section class="cierre-section" data-aos="zoom-in" data-aos-duration="1000">
+  <h1>¡Te espero para vivir una noche mágica!</h1>
+	</section>
+	<section id="main-nav">
+        <div class="nav-container">
+            <h2 class="nav-names">Camila - Mis 15 Años</h2>
+			            
+            <ul class="nav-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#padres">Padres y Padrinos</a></li>
+                <li><a href="#informacion">Información</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#musica">Música</a></li>
+                <li><a href="#confirmacion">Confirmar</a></li>
+            </ul>
+        </div>
+	</section>
+
+	
+	<footer>
+  <div class="footer-content">
+    <p>Desarrollado por Nils Godoy Vera © <span id="year"></span></p>
+  </div>
+</footer>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
